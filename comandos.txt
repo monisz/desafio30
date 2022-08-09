@@ -1,0 +1,32 @@
+1) Modo Fork y Cluster:
+    Iniciar con:
+        - >nodemon server -p 8081 -m cluster
+        - o con el puerto deseado, sin puerto inicia en el 8080
+        - o con modo fork, sin modo inicia en fork
+    Adjunto prints de pantalla de los dos inicios.
+2) Forever
+    Lo instalé de forma global.
+    - iniciar con: forever start server.js -p 8081 --watch (sin modo, por defecto fork)
+    - con >forever list y con >tasklist /fi "imagename eq node.exe"
+      veo los procesos que se están ejecutando.
+    - con >taskkill /pid 10936 /f mato un proceso y vuelvo a listar para 
+      comprobar que se reinició.
+    - con >forever stopall detengo los procesos activos
+    Adjunto prints de pantalla de todos los comandos detallados.
+3) PM2
+    Lo instalé de forma global.
+    Inicio un servidor en 8081 modo fork:
+        >pm2 start server.js --name="Server1" --watch -- 8081
+    Inicio otro en 8082 modo cluster
+        >pm2 start server.js --name="Server2" --watch -i max -- 8082
+    Mato un proceso y vuelvo a listar para comprobar que se reinició:
+        >taskkill /pid 12112 /f
+        >pm2 list (por PM2)
+        >tasklist /fi "imagename eq node.exe" (por sistema operativo)
+    Finalizo los procesos con pm2, por id y por name:
+        x id:     >pm2 stop 1
+        x nombre: >pm2 stop Server2 (cierra el resto de cluster)
+        - con >pm2 delete all elimimo todos los procesos
+    Ahora solo queda el propio de PM2. Lo cierro con 
+        taskkill /pid 14276 /f
+    Adjunto prints de pantalla de todos los comandos detallados.
