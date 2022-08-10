@@ -123,7 +123,6 @@ const { port, mode } = argsparse;
 //Ruta info
 app.get('/info', (req, res) => {
     let arguments = 'No se ingresaron argumentos';
-    //ver argumentos con el agregado de mode
     if (args.length !== 0) {
         const puerto = JSON.stringify({port})
         arguments = puerto ;
@@ -193,5 +192,3 @@ ioServer.on('connection', (socket) => {
         }) (product);
     });
 });
-
-//module.exports = httpServer;

@@ -30,3 +30,16 @@
     Ahora solo queda el propio de PM2. Lo cierro con 
         taskkill /pid 14276 /f
     Adjunto prints de pantalla de todos los comandos detallados.
+
+4) NGINX 
+  a) Para api/randoms inicio un servidor en modo cluster en puerto 8081 con:
+        >node server -p 8081 -m cluster
+     Para el resto otro sin modo (por defecto fork) en puerto 8080 con:
+        >node server -p 8080 (o sin puerto, porque está por defecto 8080)
+     Y corro nginx.exe
+  b) Para api/randoms en 4 instancias en 8082, 8083, 8084 y 8085:
+        >node server -p 8082
+        >node server -p 8083
+        >node server -p 8084
+        >node server -p 8085
+    Y la de 8080 igual a la anterior
